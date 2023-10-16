@@ -3,11 +3,7 @@ import './App.css'
 
 function App() {
   const [numbers, setNumbers] = useState([0, 1, 2]);
-
-  function addByReplacing() {
-    // creates a new - derived - state object
-    setNumbers([...numbers, numbers.length]);
-  }
+  console.log("TCL -> App -> numbers:", numbers);
 
   function addByMutating() {
     // changes (mutates) the old state entry
@@ -15,11 +11,16 @@ function App() {
     setNumbers(numbers);
   }
 
+  function addByReplacing() {
+    // creates a new - derived - state object
+    setNumbers([...numbers, numbers.length]);
+  }
+
   return (
     <div>
-      <div style={{ marginBottom: "15px" }}>{JSON.stringify(numbers)}</div>
+      <div style={{ marginBottom: "15px", fontSize: "40px" }}>{JSON.stringify(numbers)}</div>
+      <button style={{ marginRight: "10px" }} onClick={() => addByMutating()}>add (mutate)</button>
       <button onClick={() => addByReplacing()}>add (replace)</button>
-      <button onClick={() => addByMutating()}>add (mutate)</button>
     </div>
   );
 }
